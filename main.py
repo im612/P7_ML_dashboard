@@ -11,6 +11,7 @@ import plotly.graph_objects as go
 # from streamlit_shap import st_shap
 # import aws_session
 from pathlib import Path
+import sklearn
 # from requests_toolbelt.multipart.encoder import MultipartEncoder
 
 BASE_DIR = Path(__file__).resolve(strict=True).parent
