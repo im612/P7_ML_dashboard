@@ -54,8 +54,8 @@ def ind_names():
     val = get_indnames()
     return {"listindnames": val}
 
-if __name__ == "__main__":
-    uvicorn.run("main:app", host="0.0.0.0", port=8080)
+# if __name__ == "__main__":
+#     uvicorn.run("main:app", host="0.0.0.0", port=8080)
 #     uvicorn.run("main:app-1container-nonfunziona", host="backend", port=8080)
     # gunicorn.run("main:app-1container-nonfunziona", host="0.0.0.0", port=8080)
 
