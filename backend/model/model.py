@@ -50,88 +50,88 @@ def get_indnames():
 
 X = test_df.drop(columns='TARGET')
 
-#Modèle
-with open(f"{BASE_DIR}/backend/model/estimator_HistGBC_Wed_Mar_22_23_35_47_2023.pkl", "rb") as f:
-    model = pickle.load(f)
-f.close()
-
-
-
-def get_line( id, X ):
-    id = int(id)
-    X_line = pd.DataFrame(X.loc[X['SK_ID_CURR'] == id])
-    X_line = X_line.drop(columns='SK_ID_CURR')
-    return X_line
-
-
-def get_the_rest():
-    best_model = model
-    X_work = X
-    threshold = 0.9
-    return best_model, X_work, threshold
-
-
-def get_explainer():
-    # Explainer
-    with open(f"{BASE_DIR}/explainer.pkl", "rb") as f:
-        explainer = pickle.load(f)
-    f.close()
-    return explainer
-
-
-def get_threshold():
-    best_model, X_work, threshold = get_the_rest()
-    return threshold
-
-
-def get_indice( id ):
-    best_model, X_work, threshold = get_the_rest()
-    id = int(id)
-    # ind_line = X_work.loc[X_work['SK_ID_CURR'] == id].index[0]
-    pd.DataFrame(X.loc[X['SK_ID_CURR'] == id])
-    ind_line = X_work.loc[X_work['SK_ID_CURR'] == id].index
-    return ind_line
-
-
-def get_probability_df(id):
-    best_model, X, threshold = get_the_rest()
-    X_line = get_line(id, X)
-    output_prob = best_model.predict_proba(X_line)
-    output_prob = pd.DataFrame(output_prob)
-    output_prob.rename(columns={0: 'P0', 1: 'P1'}, inplace=True)
-    prob_P1 = float(output_prob['P1'].to_list()[0])
-
-    return prob_P1
-
-
-# def get_probability_df(best_model, id, X, threshold):
-def get_prediction(id):
-    best_model, X, threshold = get_the_rest()
-    X_line = get_line(id, X)
-
-    output_prob = best_model.predict_proba(X_line)
-    output_prob = pd.DataFrame(output_prob)
-    output_prob.rename(columns={0: 'P0', 1: 'P1'}, inplace=True)
-    prob_P1 = output_prob['P1'].to_list()[0]
-
-    if prob_P1 < threshold:
-        prediction = 0
-    else:
-        prediction = 1
-
-    return prediction
-
-
-# def run_shap(id):
+# #Modèle
+# with open(f"{BASE_DIR}/backend/model/estimator_HistGBC_Wed_Mar_22_23_35_47_2023.pkl", "rb") as f:
+#     model = pickle.load(f)
+# f.close()
+#
+#
+#
+# def get_line( id, X ):
+#     id = int(id)
+#     X_line = pd.DataFrame(X.loc[X['SK_ID_CURR'] == id])
+#     X_line = X_line.drop(columns='SK_ID_CURR')
+#     return X_line
+#
+#
+# def get_the_rest():
+#     best_model = model
+#     X_work = X
+#     threshold = 0.9
+#     return best_model, X_work, threshold
+#
+#
+# def get_explainer():
+#     # Explainer
+#     with open(f"{BASE_DIR}/explainer.pkl", "rb") as f:
+#         explainer = pickle.load(f)
+#     f.close()
+#     return explainer
+#
+#
+# def get_threshold():
+#     best_model, X_work, threshold = get_the_rest()
+#     return threshold
+#
+#
+# def get_indice( id ):
+#     best_model, X_work, threshold = get_the_rest()
+#     id = int(id)
+#     # ind_line = X_work.loc[X_work['SK_ID_CURR'] == id].index[0]
+#     pd.DataFrame(X.loc[X['SK_ID_CURR'] == id])
+#     ind_line = X_work.loc[X_work['SK_ID_CURR'] == id].index
+#     return ind_line
+#
+#
+# def get_probability_df(id):
 #     best_model, X, threshold = get_the_rest()
-#     explainer = get_explainer()
-#     ind_line = get_ind(id, X)
+#     X_line = get_line(id, X)
+#     output_prob = best_model.predict_proba(X_line)
+#     output_prob = pd.DataFrame(output_prob)
+#     output_prob.rename(columns={0: 'P0', 1: 'P1'}, inplace=True)
+#     prob_P1 = float(output_prob['P1'].to_list()[0])
 #
-#     shap_values = explainer.shap_values(X)
+#     return prob_P1
 #
-#     fig = shap.summary_plot(shap_values, X, show=False)
-#     plt.savefig('shap_global.png')
 #
-#     fig1 = shap.plots.waterfall(shap_values[ind_line])
-#     plt.savefig('shap_local.png')
-#     plt.close()
+# # def get_probability_df(best_model, id, X, threshold):
+# def get_prediction(id):
+#     best_model, X, threshold = get_the_rest()
+#     X_line = get_line(id, X)
+#
+#     output_prob = best_model.predict_proba(X_line)
+#     output_prob = pd.DataFrame(output_prob)
+#     output_prob.rename(columns={0: 'P0', 1: 'P1'}, inplace=True)
+#     prob_P1 = output_prob['P1'].to_list()[0]
+#
+#     if prob_P1 < threshold:
+#         prediction = 0
+#     else:
+#         prediction = 1
+#
+#     return prediction
+#
+#
+# # def run_shap(id):
+# #     best_model, X, threshold = get_the_rest()
+# #     explainer = get_explainer()
+# #     ind_line = get_ind(id, X)
+# #
+# #     shap_values = explainer.shap_values(X)
+# #
+# #     fig = shap.summary_plot(shap_values, X, show=False)
+# #     plt.savefig('shap_global.png')
+# #
+# #     fig1 = shap.plots.waterfall(shap_values[ind_line])
+# #     plt.savefig('shap_local.png')
+# #     plt.close()
