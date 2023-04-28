@@ -13,7 +13,8 @@ import plotly.graph_objects as go
 from pathlib import Path
 # from requests_toolbelt.multipart.encoder import MultipartEncoder
 
-exec(Path("../backend/main.py").read_text())
+BASE_DIR = Path(__file__).resolve(strict=True).parent
+exec(Path("./backend/main.py").read_text())
 
 
 # Streamlit
@@ -21,7 +22,7 @@ st.set_page_config(layout="wide", page_title="Tableau de bord crédit clients", 
 st.title("Tableau de bord crédit clients - Pret à dépénser")
 
 # print('hi')
-# BASE_DIR = Path(__file__).resolve(strict=True).parent
+
 # BASE_DIR = Path(__file__).resolve(strict=True).parent
 
 #
