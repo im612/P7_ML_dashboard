@@ -1,5 +1,6 @@
 fastapi
 uvicorn
+gunicorn
 matplotlib
 ipython
 #pandas==1.3.4
