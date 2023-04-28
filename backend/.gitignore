@@ -1,0 +1,3 @@
+model/aws_session.py
+model/test_split_orig_S3.csv
+__pycache__

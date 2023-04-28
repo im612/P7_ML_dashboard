@@ -1,0 +1,6 @@
+__pycache__
+.cache
+.git
+.gitignore
+.idea
+model/test_split_orig_S3.csv
