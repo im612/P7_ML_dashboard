@@ -7,10 +7,10 @@ from pydantic import BaseModel
 import uvicorn
 # import gunicorn
 # import numpy as np
-from model.model import get_probability_df
-from model.model import get_prediction
-from model.model import get_threshold
-from model.model import get_indnames
+from backend.model.model import get_probability_df
+from backend.model.model import get_prediction
+from backend.model.model import get_threshold
+from backend.model.model import get_indnames
 
 # asyncronous models
 # https://asgi.readthedocs.io/en/latest/
