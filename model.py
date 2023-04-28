@@ -18,9 +18,9 @@ BASE_DIR = Path(__file__).resolve(strict=True).parent
 
 # @st.cache_data  # 👈 Add the caching decorator
 def load_data():
-    colnames = pd.read_csv(f"{BASE_DIR}/colnames.csv").columns.to_list()
+    colnames = pd.read_csv(f"{BASE_DIR}/backend/colnames.csv").columns.to_list()
 
-    test_df = pd.read_csv(f"{BASE_DIR}/test_split_orig2.csv")
+    test_df = pd.read_csv(f"{BASE_DIR}/backend/test_split_orig2.csv")
     # test_df = pd.read_csv(f"{BASE_DIR}/model_frontend/test_split_orig.csv")
     test_df = pd.DataFrame(test_df, columns=colnames)
     test_df['SK_ID_CURR'] = test_df['SK_ID_CURR'].astype(int)
