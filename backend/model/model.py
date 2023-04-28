@@ -10,8 +10,9 @@ from pathlib import Path
 # import streamlit as st
 # from pydantic import BaseModel
 from itertools import chain
-import scikit_learn as sklearn
+# import scikit_learn as sklearn
 # import scikit-learn
+import sklearn
 
 BASE_DIR = Path(__file__).resolve(strict=True).parent
 
