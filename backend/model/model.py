@@ -51,9 +51,10 @@ def get_indnames():
 X = test_df.drop(columns='TARGET')
 
 #Modèle
-with open(f"{BASE_DIR}/estimator_HistGBC_Wed_Mar_22_23_35_47_2023.pkl", "rb") as f:
+with open(f"{BASE_DIR}/backend/model/estimator_HistGBC_Wed_Mar_22_23_35_47_2023.pkl", "rb") as f:
     model = pickle.load(f)
 f.close()
+
 
 
 def get_line( id, X ):
