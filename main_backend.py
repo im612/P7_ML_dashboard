@@ -59,7 +59,7 @@ if __name__ == "__main__":
 #     uvicorn.run("main:app-1container-nonfunziona", host="backend", port=8080)
     # gunicorn.run("main:app-1container-nonfunziona", host="0.0.0.0", port=8080)
 
-print(os.system("""host "0.0.0.0" """))
+# print(os.system("""host "0.0.0.0" """))
 
 # This is our server. FastAPI creates two endpoints, one dummy ("/") and
 # one for serving our prediction ("/{style}"). The serving endpoint takes in a name as a URL parameter.
