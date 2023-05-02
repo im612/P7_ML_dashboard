@@ -42,7 +42,8 @@ def load_data():
     # test_df['SK_ID_CURR'] = test_df['SK_ID_CURR'].astype(int)
 
     # indnames = pd.DataFrame(test_df, columns=['SK_ID_CURR']).astype(int).values
-    indnames = requests.post(url=f"https://p7a.herokuapp.com:8000/indnames")
+    indnames = requests.post(url=f"https://p7a.herokuapp.com:8081/indnames")
+    # indnames = requests.post(url=URL)
     # indnames = requests.post(url=f"http://p7a.herokuapp.com:8080/indnames")
     # indnames = requests.post(url=f"http://im612-p7-deploy-main-9v49yi.streamlit.app:8080/indnames")
 
