@@ -87,7 +87,7 @@ def get_indnames():
 # test_df = pd.DataFrame(test_df, columns=colnames)
 # test_df['SK_ID_CURR'] = test_df['SK_ID_CURR'].astype(int)
 
-X = test_df.drop(columns='TARGET')
+# X = test_df.drop(columns='TARGET')
 
 #Modèle
 with open(f"{BASE_DIR}/estimator_HistGBC_Wed_Mar_22_23_35_47_2023.pkl", "rb") as f:
