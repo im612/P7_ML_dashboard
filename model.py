@@ -10,17 +10,41 @@ from pathlib import Path
 # import streamlit as st
 # from pydantic import BaseModel
 from itertools import chain
-# import scikit_learn as sklearn
-# import scikit-learn
-import sklearn
 
 BASE_DIR = Path(__file__).resolve(strict=True).parent
 
-# @st.cache_data  # 👈 Add the caching decorator
-def load_data():
-    colnames = pd.read_csv(f"{BASE_DIR}/backend/colnames.csv").columns.to_list()
 
-    test_df = pd.read_csv(f"{BASE_DIR}/backend/test_split_orig2.csv")
+def load_colnames():
+    colnames = pd.read_csv(f"{BASE_DIR}/colnames.csv").columns.to_list()
+    return colnames
+
+
+def load_testdf():
+    test_df = pd.read_csv(f"{BASE_DIR}/test_split_orig2.csv")
+    test_df = pd.DataFrame(test_df, columns=colnames)
+    test_df['SK_ID_CURR'] = test_df['SK_ID_CURR'].astype(int)
+    return test_df
+
+
+def load_indnames():
+    test_df = load_testdf()
+    indnames = pd.DataFrame(test_df, columns=['SK_ID_CURR']).astype(int).values
+    del test_df
+    merged = list(chain.from_iterable(indnames.tolist()))
+    return merged
+
+
+def load_x():
+    test_df = load_testdf()
+    X = test_df.drop(columns='TARGET')
+    del test_df
+    return X
+
+
+def load_data():
+    colnames = pd.read_csv(f"{BASE_DIR}/colnames.csv").columns.to_list()
+
+    test_df = pd.read_csv(f"{BASE_DIR}/test_split_orig2.csv")
     # test_df = pd.read_csv(f"{BASE_DIR}/model_frontend/test_split_orig.csv")
     test_df = pd.DataFrame(test_df, columns=colnames)
     test_df['SK_ID_CURR'] = test_df['SK_ID_CURR'].astype(int)
@@ -29,9 +53,20 @@ def load_data():
 
     return colnames, test_df, indnames
 
-colnames, test_df, indnames = load_data()
 
-# @st.cache_data
+def load_data():
+    colnames = pd.read_csv(f"{BASE_DIR}/colnames.csv").columns.to_list()
+
+    test_df = pd.read_csv(f"{BASE_DIR}/test_split_orig2.csv")
+    # test_df = pd.read_csv(f"{BASE_DIR}/model_frontend/test_split_orig.csv")
+    test_df = pd.DataFrame(test_df, columns=colnames)
+    test_df['SK_ID_CURR'] = test_df['SK_ID_CURR'].astype(int)
+
+    indnames = pd.DataFrame(test_df, columns=['SK_ID_CURR']).astype(int).values
+
+    return colnames, test_df, indnames
+
+
 def get_indnames():
     colnames, test_df, indnames = load_data()
     del colnames
@@ -52,14 +87,19 @@ def get_indnames():
 
 X = test_df.drop(columns='TARGET')
 
-# #Modèle
-# with open(f"{BASE_DIR}/backend/model/estimator_HistGBC_Wed_Mar_22_23_35_47_2023.pkl", "rb") as f:
-#     model = pickle.load(f)
-# f.close()
-#
-#
+#Modèle
+with open(f"{BASE_DIR}/estimator_HistGBC_Wed_Mar_22_23_35_47_2023.pkl", "rb") as f:
+    model = pickle.load(f)
+f.close()
 
-def get_line( id, X ):
+
+def get_line1( id, X ):
+    id = int(id)
+    X_line = pd.DataFrame(X.loc[X['SK_ID_CURR'] == id])
+    X_line = X_line.drop(columns='SK_ID_CURR')
+    return X_line
+
+def get_line( id ):
     id = int(id)
     X_line = pd.DataFrame(X.loc[X['SK_ID_CURR'] == id])
     X_line = X_line.drop(columns='SK_ID_CURR')
@@ -124,16 +164,16 @@ def get_prediction(id):
     return prediction
 
 
-# # def run_shap(id):
-# #     best_model, X, threshold = get_the_rest()
-# #     explainer = get_explainer()
-# #     ind_line = get_ind(id, X)
-# #
-# #     shap_values = explainer.shap_values(X)
-# #
-# #     fig = shap.summary_plot(shap_values, X, show=False)
-# #     plt.savefig('shap_global.png')
-# #
-# #     fig1 = shap.plots.waterfall(shap_values[ind_line])
-# #     plt.savefig('shap_local.png')
-# #     plt.close()
+# def run_shap(id):
+#     best_model, X, threshold = get_the_rest()
+#     explainer = get_explainer()
+#     ind_line = get_ind(id, X)
+#
+#     shap_values = explainer.shap_values(X)
+#
+#     fig = shap.summary_plot(shap_values, X, show=False)
+#     plt.savefig('shap_global.png')
+#
+#     fig1 = shap.plots.waterfall(shap_values[ind_line])
+#     plt.savefig('shap_local.png')
+#     plt.close()
