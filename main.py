@@ -34,7 +34,7 @@ st.title("Tableau de bord crédit clients - Pret à dépénser")
 
 urlname=st.secrets['config']['API_URL']
 
-# @st.cache_data  # 👈 Add the caching decorator
+
 @st.cache_data  # 👈 Add the caching decorator
 def load_indnames():
     indnames = requests.post(url=f"{urlname}/indnames")
@@ -62,10 +62,11 @@ def load_indnames():
 
 # response = requests.post(url=f"{urlname}/indnames")
 response = load_indnames()
-objind = response.json()
-indnames = objind['listindnames']
+st.write(response)
+# objind = response.json()
+# indnames = objind['listindnames']
 #
-# st.write(indnames)
+
 
 
 # df = load_data("https://github.com/plotly/datasets/raw/master/uber-rides-data1.csv")
