@@ -1,4 +1,4 @@
-web: gunicorn main_backend:app -b localhost:8000
+web: gunicorn main_backend:app
 #web: uvicorn main_backend:app
 
 #web: gunicorn -w 4 -k uvicorn.workers.UvicornWorker main_backend:app
