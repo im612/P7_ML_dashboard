@@ -61,8 +61,8 @@ def get_prob(qji):
     return response
 
 response = get_prob(qj)
-objind = response.json()
-prob = objind['probability']
+# objind = response.json()
+# prob = objind['probability']
 
 
 
