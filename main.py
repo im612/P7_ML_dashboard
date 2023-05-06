@@ -18,8 +18,6 @@ BASE_DIR = Path(__file__).resolve(strict=True).parent
 
 exec(Path("main_backend.py").read_text(), globals())
 
-st.experimental_singleton.clear()
-
 # Streamlit
 st.set_page_config(layout="wide", page_title="Tableau de bord crédit clients", page_icon="📂")
 st.title("Tableau de bord crédit clients - Pret à dépénser")
@@ -46,7 +44,9 @@ st.header(f'Code client: {str(int(id))}')
 q = id
 qj = json.dumps(q)
 
-# response = requests.post(url=f"{urlname}/probability", data=qj)
+response = requests.post(url=f"{urlname}/probability", data=qj)
+st.write(response)
+
 # # # # response = requests.post(url=f"http://86.214.128.9:8080/probability", data=qj)
 # objind = response.json()
 # prob = objind['probability']
@@ -54,16 +54,16 @@ qj = json.dumps(q)
 # st.write(objind, prob)
 
 
-@st.cache_data(ttl=3600)  # 👈 Add the caching decorator
-def get_prob(qji):
-    response = requests.post(url=f"{urlname}/probability", data=qji)
-    # indnames = requests.post(url=f"{urlname}/indnames")
-    return response
+# @st.cache_data(ttl=3600)  # 👈 Add the caching decorator
+# def get_prob(qji):
+#     response = requests.post(url=f"{urlname}/probability", data=qji)
+#     # indnames = requests.post(url=f"{urlname}/indnames")
+#     return response
 
-response = get_prob(qj)
-st.write(response)
-objprob = response.json()
-st.write(objprob)
+# response = get_prob(qj)
+# st.write(response)
+# objprob = response.json()
+# st.write(objprob)
 
 # prob = objind['probability']
 
