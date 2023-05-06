@@ -44,7 +44,7 @@ st.header(f'Code client: {str(int(id))}')
 q = id
 qj = json.dumps(q)
 
-response = requests.post(url=f"{urlname}/probability", data=qj)
+response = requests.post(url=f"{urlname}:8000/probability", data=qj)
 st.write(response)
 objprob = response.json()
 st.write(objprob)
