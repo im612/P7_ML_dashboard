@@ -52,11 +52,11 @@ def get_indnames():
     merged = list(chain.from_iterable(indnames.tolist()))
     return merged
 #
-# def load_x():
-#     test_df = load_testdf()
-#     X = test_df.drop(columns='TARGET')
-#     del test_df
-#     return X
+def load_x():
+    test_df = load_testdf()
+    X = test_df.drop(columns='TARGET')
+    del test_df
+    return X
 
 
 # def load_data():
@@ -120,7 +120,7 @@ def get_line( id ):
 
 def get_the_rest():
     best_model = model
-    X_work = X
+    X_work = load_x()
     threshold = 0.9
     return best_model, X_work, threshold
 
