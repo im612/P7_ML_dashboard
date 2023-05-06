@@ -1,4 +1,4 @@
-web: gunicorn main_backend:app
+web: gunicorn main_backend:app -b [::1]:8000
 #web: uvicorn main_backend:app
 
 #web: gunicorn -w 4 -k uvicorn.workers.UvicornWorker main_backend:app
