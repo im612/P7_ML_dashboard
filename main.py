@@ -73,7 +73,7 @@ st.header(f'Code client: {str(int(id))}')
 # q = {"id" : f'{id.tolist()[0]}'}
 # q = {"id" : f"{id, id['id']}"}
 # q = {"id" : f'{id["id"]}'}
-st.write(type(id))
+st.write(id, type(id))
 # qj = json.dumps(q)
 # # https://stackoverflow.com/questions/64057445/fast-api-post-does-not-recgonize-my-parameter
 #
