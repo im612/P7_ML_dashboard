@@ -2,3 +2,4 @@ aws_session.py
 model_frontend/test_split_orig_S3.csv
 aws_session.py
 __pycache__
+nota_segreti.txt
