@@ -34,7 +34,8 @@ st.write(ON_HEROKU)
 # https://docs.streamlit.io/library/advanced-features/caching#controlling-cache-size-and-duration
 @st.cache_data(ttl=3600)  # 👈 Add the caching decorator
 def load_indnames():
-    indnames = requests.post(url=f"{urlname}/indnames")
+    # indnames = requests.post(url=f"{urlname}/indnames")
+    indnames = requests.post(url=f"{urlname2}/indnames")
     return indnames
 
 response = load_indnames()
