@@ -72,6 +72,7 @@ st.header(f'Code client: {str(int(id))}')
 # # https://stackoverflow.com/questions/72060222/how-do-i-pass-args-and-kwargs-to-a-rest-endpoint-built-with-fastapi
 # q = {"id" : f'{id.tolist()[0]}'}
 q = {"id" : f'{id}'}
+st.write(q)
 qj = json.dumps(q)
 # # https://stackoverflow.com/questions/64057445/fast-api-post-does-not-recgonize-my-parameter
 #
@@ -81,20 +82,20 @@ qj = json.dumps(q)
 # fireto = '0.0.0.0'
 # # fireto = 'backend'
 #
-response = requests.post(url=f"{urlname}/probability", data=qj)
-# # response = requests.post(url=f"http://86.214.128.9:8080/probability", data=qj)
-obj1 = response.json()
-prob = obj1['probability']
+# response = requests.post(url=f"{urlname}/probability", data=qj)
+# # # response = requests.post(url=f"http://86.214.128.9:8080/probability", data=qj)
+# obj1 = response.json()
+# prob = obj1['probability']
+# # #
+# response = requests.post(url=f"{urlname}/prediction", data=qj)
+# obj2 = response.json()
+# pred = obj2['prediction']
 # #
-response = requests.post(url=f"{urlname}/prediction", data=qj)
-obj2 = response.json()
-pred = obj2['prediction']
-#
-response = requests.post(url=f"{urlname}/seuil", data=qj)
-obj3 = response.json()
-seuil = obj3['seuil']
-#
-st.divider()
+# response = requests.post(url=f"{urlname}/seuil", data=qj)
+# obj3 = response.json()
+# seuil = obj3['seuil']
+# #
+# st.divider()
 
 # # ALLEGGERIMENTO 1
 # # # col1, col2, col3 = st.columns(3)
