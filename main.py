@@ -42,7 +42,8 @@ st.header(f'Code client: {str(int(id))}')
 
 # ok
 
-q = {"id" : f'{id.tolist()[0]}'}
+# q = {"id" : f'{id.tolist()[0]}'}
+q = id
 qj = json.dumps(q)
 
 # response = requests.post(url=f"{urlname}/probability", data=qj)
