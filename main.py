@@ -35,25 +35,28 @@ st.title("Tableau de bord crédit clients - Pret à dépénser")
 urlname=st.secrets['config']['API_URL']
 
 @st.cache_data  # 👈 Add the caching decorator
-def load_data():
-    # colnames = pd.read_csv(f"{BASE_DIR}/model_frontend/colnames.csv").columns.to_list()
-
-    # test_df = pd.read_csv(f"{BASE_DIR}/model_frontend/test_split_orig2.csv")
-    # # test_df = pd.read_csv(f"{BASE_DIR}/model_frontend/test_split_orig.csv")
-    # test_df = pd.DataFrame(test_df, columns=colnames)
-    # test_df['SK_ID_CURR'] = test_df['SK_ID_CURR'].astype(int)
-
-    # indnames = pd.DataFrame(test_df, columns=['SK_ID_CURR']).astype(int).values
-    # indnames = requests.post(url=f"https://p7a.herokuapp.com:8081/indnames")
-    indnames = requests.post(url=f"{urlname}/indnames")
-    # indnames = requests.post(url=URL)
-    # indnames = requests.post(url=f"http://p7a.herokuapp.com:8080/indnames")
-    # indnames = requests.post(url=f"http://im612-p7-deploy-main-9v49yi.streamlit.app:8080/indnames")
-
-    return indnames
+# def load_data():
+#     # colnames = pd.read_csv(f"{BASE_DIR}/model_frontend/colnames.csv").columns.to_list()
+#
+#     # test_df = pd.read_csv(f"{BASE_DIR}/model_frontend/test_split_orig2.csv")
+#     # # test_df = pd.read_csv(f"{BASE_DIR}/model_frontend/test_split_orig.csv")
+#     # test_df = pd.DataFrame(test_df, columns=colnames)
+#     # test_df['SK_ID_CURR'] = test_df['SK_ID_CURR'].astype(int)
+#
+#     # indnames = pd.DataFrame(test_df, columns=['SK_ID_CURR']).astype(int).values
+#     # indnames = requests.post(url=f"https://p7a.herokuapp.com:8081/indnames")
+#     indnames = requests.post(url=f"{urlname}/indnames")
+#     # indnames = requests.post(url=URL)
+#     # indnames = requests.post(url=f"http://p7a.herokuapp.com:8080/indnames")
+#     # indnames = requests.post(url=f"http://im612-p7-deploy-main-9v49yi.streamlit.app:8080/indnames")
+#
+#     return indnames
 
 # colnames, test_df, indnames = load_data()
-response = load_data()
+# response = load_data()
+# indnames = requests.post(url=f"{urlname}/indnames")
+
+response = requests.post(url=f"{urlname}/indnames")
 objind = response.json()
 indnames = objind['listindnames']
 #
