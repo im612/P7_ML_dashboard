@@ -26,12 +26,6 @@ st.title("Tableau de bord crédit clients - Pret à dépénser")
 
 urlname=st.secrets['config']['API_URL']
 
-
-# @st.cache_data(ttl=3600)  # 👈 Add the caching decorator
-# def load_indnames():
-#     indnames = requests.post(url=f"{urlname}/indnames")
-#     return indnames
-
 # https://docs.streamlit.io/library/advanced-features/caching#controlling-cache-size-and-duration
 @st.cache_data(ttl=3600)  # 👈 Add the caching decorator
 def load_indnames():
@@ -42,28 +36,32 @@ response = load_indnames()
 objind = response.json()
 indnames = objind['listindnames']
 
-# # https://docs.streamlit.io/library/advanced-features/caching#controlling-cache-size-and-duration
-# @st.cache_data(ttl=3600)  # 👈 Add the caching decorator
-# def load_indnames():
-#     indnames = requests.post(url=f"{urlname}/indnames")
-#     response = load_indnames()
-#     objind = response.json()
-#     indnames = objind['listindnames']
-#     return indnames
-
-# indnames = load_indnames()
-
-
-# df = load_data("https://github.com/plotly/datasets/raw/master/uber-rides-data1.csv")
-# st.dataframe(df)
-
-# Alleggerimento 2
 # # SELECTION NUMERO CLIENT
 id = st.selectbox("Saisir le code client :", [i for i in indnames])
 st.header(f'Code client: {str(int(id))}')
 
+# ok
 
+q = {"id" : f'{id.tolist()[0]}'}
+qj = json.dumps(q)
 
+# response = requests.post(url=f"{urlname}/probability", data=qj)
+# # # response = requests.post(url=f"http://86.214.128.9:8080/probability", data=qj)
+# objind = response.json()
+# prob = objind['probability']
+# st.write(objind)
+# st.write(objind, prob)
+
+# # #
+# response = requests.post(url=f"{urlname}/prediction", data=qj)
+# obj2 = response.json()
+# pred = obj2['prediction']
+# #
+# response = requests.post(url=f"{urlname}/seuil", data=qj)
+# obj3 = response.json()
+# seuil = obj3['seuil']
+# #
+# st.divider()
 
 
 #
@@ -83,23 +81,7 @@ st.header(f'Code client: {str(int(id))}')
 # fireto = '0.0.0.0'
 # # fireto = 'backend'
 #
-# response = requests.post(url=f"{urlname}/probability", data=qj)
-# # # response = requests.post(url=f"http://86.214.128.9:8080/probability", data=qj)
-# objind = response.json()
-# prob = objind['probability']
-# st.write(objind)
-# st.write(objind, prob)
 
-# # #
-# response = requests.post(url=f"{urlname}/prediction", data=qj)
-# obj2 = response.json()
-# pred = obj2['prediction']
-# #
-# response = requests.post(url=f"{urlname}/seuil", data=qj)
-# obj3 = response.json()
-# seuil = obj3['seuil']
-# #
-# st.divider()
 
 # # ALLEGGERIMENTO 1
 # # # col1, col2, col3 = st.columns(3)
@@ -234,3 +216,15 @@ st.header(f'Code client: {str(int(id))}')
 # #     # indnames = requests.post(url=f"http://im612-p7-deploy-main-9v49yi.streamlit.app:8080/indnames")
 # #
 #     return indnames
+
+# molto lento
+# # https://docs.streamlit.io/library/advanced-features/caching#controlling-cache-size-and-duration
+# @st.cache_data(ttl=3600)  # 👈 Add the caching decorator
+# def load_indnames():
+#     indnames = requests.post(url=f"{urlname}/indnames")
+#     response = load_indnames()
+#     objind = response.json()
+#     indnames = objind['listindnames']
+#     return indnames
+
+# indnames = load_indnames()
