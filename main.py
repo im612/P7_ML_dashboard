@@ -32,7 +32,8 @@ st.title("Tableau de bord crédit clients - Pret à dépénser")
 # else:
 #     test_df = pd.read_csv(f"{BASE_DIR}/test_split_orig.csv")
 
-urlname = 'https://p7a.herokuapp.com'
+# urlname = 'https://p7a.herokuapp.com'
+urlname=st.secrets['config']['API_URL']
 # urlname = URLNAME
 # 'https://p7a.herokuapp.com'
 
