@@ -89,9 +89,10 @@ qj = json.dumps(q)
 #
 response = requests.post(url=f"{urlname}/probability", data=qj)
 # # # response = requests.post(url=f"http://86.214.128.9:8080/probability", data=qj)
-obj1 = response.json()
-st.write(response, obj1)
-# prob = obj1['probability']
+objind = response.json()
+prob = objind['probability']
+st.write(objind, prob)
+
 # # #
 # response = requests.post(url=f"{urlname}/prediction", data=qj)
 # obj2 = response.json()
