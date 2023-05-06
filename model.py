@@ -20,7 +20,7 @@ def load_colnames():
 
 
 def load_testdf():
-    test_df = pd.read_csv(f"{BASE_DIR}/test_split_orig2.csv")
+    test_df = pd.read_csv(f"{BASE_DIR}/backend/test_split_orig2.csv")
     colnames = load_colnames()
     test_df = pd.DataFrame(test_df, columns=colnames)
     del colnames
