@@ -22,16 +22,6 @@ exec(Path("main_backend.py").read_text(), globals())
 st.set_page_config(layout="wide", page_title="Tableau de bord crédit clients", page_icon="📂")
 st.title("Tableau de bord crédit clients - Pret à dépénser")
 
-# print('hi')
-
-# BASE_DIR = Path(__file__).resolve(strict=True).parent
-
-#
-# if my_file.is_file():
-#     test_df = pd.read_csv(f"{BASE_DIR}/test_split_orig_S3.csv")
-# else:
-#     test_df = pd.read_csv(f"{BASE_DIR}/test_split_orig.csv")
-
 urlname=st.secrets['config']['API_URL']
 
 

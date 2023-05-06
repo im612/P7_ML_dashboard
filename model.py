@@ -13,7 +13,7 @@ from itertools import chain
 
 BASE_DIR = Path(__file__).resolve(strict=True).parent
 
-
+#
 def load_colnames():
     colnames = pd.read_csv(f"{BASE_DIR}/colnames.csv").columns.to_list()
     return colnames
@@ -35,39 +35,14 @@ def load_indnames():
     merged = list(chain.from_iterable(indnames.tolist()))
     return merged
 
-
-def load_x():
-    test_df = load_testdf()
-    X = test_df.drop(columns='TARGET')
-    del test_df
-    return X
-
-
 def load_data():
     colnames = pd.read_csv(f"{BASE_DIR}/colnames.csv").columns.to_list()
-
     test_df = pd.read_csv(f"{BASE_DIR}/test_split_orig2.csv")
-    # test_df = pd.read_csv(f"{BASE_DIR}/model_frontend/test_split_orig.csv")
     test_df = pd.DataFrame(test_df, columns=colnames)
     test_df['SK_ID_CURR'] = test_df['SK_ID_CURR'].astype(int)
-
     indnames = pd.DataFrame(test_df, columns=['SK_ID_CURR']).astype(int).values
 
     return colnames, test_df, indnames
-
-
-def load_data():
-    colnames = pd.read_csv(f"{BASE_DIR}/colnames.csv").columns.to_list()
-
-    test_df = pd.read_csv(f"{BASE_DIR}/test_split_orig2.csv")
-    # test_df = pd.read_csv(f"{BASE_DIR}/model_frontend/test_split_orig.csv")
-    test_df = pd.DataFrame(test_df, columns=colnames)
-    test_df['SK_ID_CURR'] = test_df['SK_ID_CURR'].astype(int)
-
-    indnames = pd.DataFrame(test_df, columns=['SK_ID_CURR']).astype(int).values
-
-    return colnames, test_df, indnames
-
 
 def get_indnames():
     colnames, test_df, indnames = load_data()
@@ -76,6 +51,41 @@ def get_indnames():
     # >>> list2d = [[1,2,3], [4,5,6], [7], [8,9]]
     merged = list(chain.from_iterable(indnames.tolist()))
     return merged
+#
+# def load_x():
+#     test_df = load_testdf()
+#     X = test_df.drop(columns='TARGET')
+#     del test_df
+#     return X
+
+
+# def load_data():
+#     colnames = pd.read_csv(f"{BASE_DIR}/colnames.csv").columns.to_list()
+#
+#     test_df = pd.read_csv(f"{BASE_DIR}/test_split_orig2.csv")
+#     # test_df = pd.read_csv(f"{BASE_DIR}/model_frontend/test_split_orig.csv")
+#     test_df = pd.DataFrame(test_df, columns=colnames)
+#     test_df['SK_ID_CURR'] = test_df['SK_ID_CURR'].astype(int)
+#
+#     indnames = pd.DataFrame(test_df, columns=['SK_ID_CURR']).astype(int).values
+#
+#     return colnames, test_df, indnames
+
+
+# def load_data():
+#     colnames = pd.read_csv(f"{BASE_DIR}/colnames.csv").columns.to_list()
+#
+#     test_df = pd.read_csv(f"{BASE_DIR}/test_split_orig2.csv")
+#     # test_df = pd.read_csv(f"{BASE_DIR}/model_frontend/test_split_orig.csv")
+#     test_df = pd.DataFrame(test_df, columns=colnames)
+#     test_df['SK_ID_CURR'] = test_df['SK_ID_CURR'].astype(int)
+#
+#     indnames = pd.DataFrame(test_df, columns=['SK_ID_CURR']).astype(int).values
+#
+#     return colnames, test_df, indnames
+#
+
+
 
 # print(get_indnames())
 
