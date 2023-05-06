@@ -27,13 +27,13 @@ st.title("Tableau de bord crédit clients - Pret à dépénser")
 urlname=st.secrets['config']['API_URL']
 
 
-# @st.cache_data  # 👈 Add the caching decorator
+# @st.cache_data(ttl=3600)  # 👈 Add the caching decorator
 # def load_indnames():
 #     indnames = requests.post(url=f"{urlname}/indnames")
 #     return indnames
 
-@st.cache_data  # 👈 Add the caching decorator
-def load_data():
+@st.cache_data(ttl=3600)  # 👈 Add the caching decorator
+def load_indnames():
 #     # colnames = pd.read_csv(f"{BASE_DIR}/model_frontend/colnames.csv").columns.to_list()
 #
 #     # test_df = pd.read_csv(f"{BASE_DIR}/model_frontend/test_split_orig2.csv")
@@ -51,12 +51,12 @@ def load_data():
     return indnames
 
 # colnames, test_df, indnames = load_data()
-response = load_data()
+response = load_indnames()
 # indnames = requests.post(url=f"{urlname}/indnames")
 
 # response = requests.post(url=f"{urlname}/indnames")
 # response = load_indnames()
-st.write(response, type(response))
+# st.write(response, type(response))
 objind = response.json()
 indnames = objind['listindnames']
 #
