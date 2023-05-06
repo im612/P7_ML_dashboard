@@ -53,8 +53,9 @@ q = id
 qj = json.dumps(q)
 
 # response = requests.post(url=f"{urlname2}/probability", data=qj)
+response = requests.post(url=f"{urlname2}/probability", json=qj)
 # response = requests.post(url=f"{urlname}/probability", data=qj)
-response = requests.post(url=f"{urlname}/probability")
+# response = requests.post(url=f"{urlname}/probability")
 st.write(response)
 objprob = response.json()
 st.write(objprob)
@@ -69,9 +70,9 @@ st.write(objprob)
 # @st.cache_data(ttl=3600)  # 👈 Add the caching decorator
 # def get_prob(qji):
 #     response = requests.post(url=f"{urlname}/probability", data=qji)
-#     # indnames = requests.post(url=f"{urlname}/indnames")
+# #     # indnames = requests.post(url=f"{urlname}/indnames")
 #     return response
-
+# #
 # response = get_prob(qj)
 # st.write(response)
 
