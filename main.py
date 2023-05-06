@@ -46,6 +46,8 @@ qj = json.dumps(q)
 
 response = requests.post(url=f"{urlname}/probability", data=qj)
 st.write(response)
+objprob = response.json()
+st.write(objprob)
 
 # # # # response = requests.post(url=f"http://86.214.128.9:8080/probability", data=qj)
 # objind = response.json()
@@ -62,8 +64,7 @@ st.write(response)
 
 # response = get_prob(qj)
 # st.write(response)
-# objprob = response.json()
-# st.write(objprob)
+
 
 # prob = objind['probability']
 
