@@ -71,8 +71,8 @@ st.header(f'Code client: {str(int(id))}')
 # # APPEL AUX ENDPOINTS
 # # https://stackoverflow.com/questions/72060222/how-do-i-pass-args-and-kwargs-to-a-rest-endpoint-built-with-fastapi
 # q = {"id" : f'{id.tolist()[0]}'}
-q = {"id" : f'{id}'}
-q = {"id" : f'{id["id"]}'}
+q = {"id" : f"{id, id['id']}"}
+# q = {"id" : f'{id["id"]}'}
 
 st.write(q)
 qj = json.dumps(q)
