@@ -18,6 +18,8 @@ BASE_DIR = Path(__file__).resolve(strict=True).parent
 
 exec(Path("main_backend.py").read_text(), globals())
 
+st.experimental_singleton.clear()
+
 # Streamlit
 st.set_page_config(layout="wide", page_title="Tableau de bord crédit clients", page_icon="📂")
 st.title("Tableau de bord crédit clients - Pret à dépénser")
