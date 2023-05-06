@@ -33,23 +33,23 @@ urlname=st.secrets['config']['API_URL']
 #     return indnames
 
 # https://docs.streamlit.io/library/advanced-features/caching#controlling-cache-size-and-duration
-# @st.cache_data(ttl=3600)  # 👈 Add the caching decorator
-# def load_indnames():
-#     indnames = requests.post(url=f"{urlname}/indnames")
-#     return indnames
-#
-# response = load_indnames()
-# objind = response.json()
-# indnames = objind['listindnames']
-
-# https://docs.streamlit.io/library/advanced-features/caching#controlling-cache-size-and-duration
 @st.cache_data(ttl=3600)  # 👈 Add the caching decorator
 def load_indnames():
     indnames = requests.post(url=f"{urlname}/indnames")
-    response = load_indnames()
-    objind = response.json()
-    indnames = objind['listindnames']
     return indnames
+
+response = load_indnames()
+objind = response.json()
+indnames = objind['listindnames']
+
+# # https://docs.streamlit.io/library/advanced-features/caching#controlling-cache-size-and-duration
+# @st.cache_data(ttl=3600)  # 👈 Add the caching decorator
+# def load_indnames():
+#     indnames = requests.post(url=f"{urlname}/indnames")
+#     response = load_indnames()
+#     objind = response.json()
+#     indnames = objind['listindnames']
+#     return indnames
 
 indnames = load_indnames()
 
