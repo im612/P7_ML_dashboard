@@ -13,6 +13,7 @@ import plotly.graph_objects as go
 from pathlib import Path
 import sklearn
 # from requests_toolbelt.multipart.encoder import MultipartEncoder
+import os
 
 BASE_DIR = Path(__file__).resolve(strict=True).parent
 
@@ -24,6 +25,9 @@ st.title("Tableau de bord crédit clients - Pret à dépénser")
 
 urlname=st.secrets['config']['API_URL']
 urlname2=st.secrets['config']['API_URL2']
+
+ON_HEROKU = os.environ.get('ON_HEROKU')
+st.write(ON_HEROKU)
 
 # https://docs.streamlit.io/library/advanced-features/caching#controlling-cache-size-and-duration
 @st.cache_data(ttl=3600)  # 👈 Add the caching decorator
