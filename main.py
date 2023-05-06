@@ -51,7 +51,7 @@ indnames = objind['listindnames']
 #     indnames = objind['listindnames']
 #     return indnames
 
-indnames = load_indnames()
+# indnames = load_indnames()
 
 
 # df = load_data("https://github.com/plotly/datasets/raw/master/uber-rides-data1.csv")
