@@ -26,8 +26,9 @@ st.title("Tableau de bord crédit clients - Pret à dépénser")
 urlname=st.secrets['config']['API_URL']
 urlname2=st.secrets['config']['API_URL2']
 
-# ON_HEROKU = os.environ.get('ON_HEROKU')
-ON_HEROKU = os.environ("PORT")
+# ON_HEROKU = os.environ.get("PORT'ON_HEROKU')
+ON_HEROKU = os.environ.get("PORT")
+# ON_HEROKU = os.environ("PORT")
 st.write(ON_HEROKU)
 
 # https://docs.streamlit.io/library/advanced-features/caching#controlling-cache-size-and-duration
