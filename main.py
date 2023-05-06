@@ -63,8 +63,8 @@ def load_indnames():
 # response = requests.post(url=f"{urlname}/indnames")
 response = load_indnames()
 st.write(response)
-# objind = response.json()
-# indnames = objind['listindnames']
+objind = response.json()
+indnames = objind['listindnames']
 #
 
 
