@@ -72,6 +72,8 @@ st.header(f'Code client: {str(int(id))}')
 # # https://stackoverflow.com/questions/72060222/how-do-i-pass-args-and-kwargs-to-a-rest-endpoint-built-with-fastapi
 # q = {"id" : f'{id.tolist()[0]}'}
 q = {"id" : f'{id}'}
+q = {"id" : f'{id["id"]}'}
+
 st.write(q)
 qj = json.dumps(q)
 # # https://stackoverflow.com/questions/64057445/fast-api-post-does-not-recgonize-my-parameter
