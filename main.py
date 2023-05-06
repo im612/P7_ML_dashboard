@@ -23,6 +23,7 @@ st.set_page_config(layout="wide", page_title="Tableau de bord crédit clients", 
 st.title("Tableau de bord crédit clients - Pret à dépénser")
 
 urlname=st.secrets['config']['API_URL']
+urlname2=st.secrets['config']['API_URL2']
 
 # https://docs.streamlit.io/library/advanced-features/caching#controlling-cache-size-and-duration
 @st.cache_data(ttl=3600)  # 👈 Add the caching decorator
@@ -44,7 +45,7 @@ st.header(f'Code client: {str(int(id))}')
 q = id
 qj = json.dumps(q)
 
-response = requests.post(url=f"{urlname}:8000/probability", data=qj)
+response = requests.post(url=f"{urlname2}/probability", data=qj)
 st.write(response)
 objprob = response.json()
 st.write(objprob)
