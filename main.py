@@ -33,6 +33,8 @@ st.title("Tableau de bord crédit clients - Pret à dépénser")
 #     test_df = pd.read_csv(f"{BASE_DIR}/test_split_orig.csv")
 
 urlname = 'https://p7a.herokuapp.com'
+# urlname = URLNAME
+# 'https://p7a.herokuapp.com'
 
 @st.cache_data  # 👈 Add the caching decorator
 def load_data():
@@ -87,7 +89,8 @@ qj = json.dumps(q)
 response = requests.post(url=f"{urlname}/probability", data=qj)
 # # # response = requests.post(url=f"http://86.214.128.9:8080/probability", data=qj)
 obj1 = response.json()
-prob = obj1['probability']
+st.write(obj1)
+# prob = obj1['probability']
 # # #
 # response = requests.post(url=f"{urlname}/prediction", data=qj)
 # obj2 = response.json()
