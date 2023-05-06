@@ -15,7 +15,7 @@ BASE_DIR = Path(__file__).resolve(strict=True).parent
 
 #
 def load_colnames():
-    colnames = pd.read_csv(f"{BASE_DIR}/colnames.csv").columns.to_list()
+    colnames = pd.read_csv(f"{BASE_DIR}/backend/colnames.csv").columns.to_list()
     return colnames
 
 
