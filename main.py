@@ -46,12 +46,26 @@ st.header(f'Code client: {str(int(id))}')
 q = id
 qj = json.dumps(q)
 
-response = requests.post(url=f"{urlname}/probability", data=qj)
-# # # response = requests.post(url=f"http://86.214.128.9:8080/probability", data=qj)
+# response = requests.post(url=f"{urlname}/probability", data=qj)
+# # # # response = requests.post(url=f"http://86.214.128.9:8080/probability", data=qj)
+# objind = response.json()
+# prob = objind['probability']
+# # st.write(objind)
+# st.write(objind, prob)
+
+
+@st.cache_data(ttl=3600)  # 👈 Add the caching decorator
+def get_prob(qji):
+    response = requests.post(url=f"{urlname}/probability", data=qji)
+    # indnames = requests.post(url=f"{urlname}/indnames")
+    return response
+
+response = get_prob(qj)
 objind = response.json()
 prob = objind['probability']
-# st.write(objind)
-st.write(objind, prob)
+
+
+
 
 # # #
 # response = requests.post(url=f"{urlname}/prediction", data=qj)
