@@ -32,35 +32,26 @@ urlname=st.secrets['config']['API_URL']
 #     indnames = requests.post(url=f"{urlname}/indnames")
 #     return indnames
 
+# https://docs.streamlit.io/library/advanced-features/caching#controlling-cache-size-and-duration
 @st.cache_data(ttl=3600)  # 👈 Add the caching decorator
 def load_indnames():
-#     # colnames = pd.read_csv(f"{BASE_DIR}/model_frontend/colnames.csv").columns.to_list()
-#
-#     # test_df = pd.read_csv(f"{BASE_DIR}/model_frontend/test_split_orig2.csv")
-#     # # test_df = pd.read_csv(f"{BASE_DIR}/model_frontend/test_split_orig.csv")
-#     # test_df = pd.DataFrame(test_df, columns=colnames)
-#     # test_df['SK_ID_CURR'] = test_df['SK_ID_CURR'].astype(int)
-#
-#     # indnames = pd.DataFrame(test_df, columns=['SK_ID_CURR']).astype(int).values
-#     # indnames = requests.post(url=f"https://p7a.herokuapp.com:8081/indnames")
     indnames = requests.post(url=f"{urlname}/indnames")
-#     # indnames = requests.post(url=URL)
-#     # indnames = requests.post(url=f"http://p7a.herokuapp.com:8080/indnames")
-#     # indnames = requests.post(url=f"http://im612-p7-deploy-main-9v49yi.streamlit.app:8080/indnames")
-#
     return indnames
 
-# colnames, test_df, indnames = load_data()
 response = load_indnames()
-# indnames = requests.post(url=f"{urlname}/indnames")
-
-# response = requests.post(url=f"{urlname}/indnames")
-# response = load_indnames()
-# st.write(response, type(response))
 objind = response.json()
 indnames = objind['listindnames']
-#
 
+# https://docs.streamlit.io/library/advanced-features/caching#controlling-cache-size-and-duration
+@st.cache_data(ttl=3600)  # 👈 Add the caching decorator
+def load_indnames2():
+    indnames = requests.post(url=f"{urlname}/indnames")
+    response = load_indnames()
+    objind = response.json()
+    indnames = objind['listindnames']
+    return indnames
+
+indnames = load_indnames2()
 
 
 # df = load_data("https://github.com/plotly/datasets/raw/master/uber-rides-data1.csv")
@@ -70,6 +61,11 @@ indnames = objind['listindnames']
 # # SELECTION NUMERO CLIENT
 id = st.selectbox("Saisir le code client :", [i for i in indnames])
 st.header(f'Code client: {str(int(id))}')
+
+
+
+
+
 #
 # # APPEL AUX ENDPOINTS
 # # https://stackoverflow.com/questions/72060222/how-do-i-pass-args-and-kwargs-to-a-rest-endpoint-built-with-fastapi
@@ -218,3 +214,23 @@ st.header(f'Code client: {str(int(id))}')
 # # #     plt.figure(figsize=(0.8, 0.8))
 # # #     st.pyplot(fig=fig, use_container_width=False)
 # # #     st.divider()
+
+# archivio
+# # https://docs.streamlit.io/library/advanced-features/caching#controlling-cache-size-and-duration
+# @st.cache_data(ttl=3600)  # 👈 Add the caching decorator
+# def load_indnames():
+# #     # colnames = pd.read_csv(f"{BASE_DIR}/model_frontend/colnames.csv").columns.to_list()
+# #
+# #     # test_df = pd.read_csv(f"{BASE_DIR}/model_frontend/test_split_orig2.csv")
+# #     # # test_df = pd.read_csv(f"{BASE_DIR}/model_frontend/test_split_orig.csv")
+# #     # test_df = pd.DataFrame(test_df, columns=colnames)
+# #     # test_df['SK_ID_CURR'] = test_df['SK_ID_CURR'].astype(int)
+# #
+# #     # indnames = pd.DataFrame(test_df, columns=['SK_ID_CURR']).astype(int).values
+# #     # indnames = requests.post(url=f"https://p7a.herokuapp.com:8081/indnames")
+#     indnames = requests.post(url=f"{urlname}/indnames")
+# #     # indnames = requests.post(url=URL)
+# #     # indnames = requests.post(url=f"http://p7a.herokuapp.com:8080/indnames")
+# #     # indnames = requests.post(url=f"http://im612-p7-deploy-main-9v49yi.streamlit.app:8080/indnames")
+# #
+#     return indnames
