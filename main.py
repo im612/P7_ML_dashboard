@@ -27,10 +27,10 @@ st.title("Tableau de bord crédit clients - Pret à dépénser")
 urlname=st.secrets['config']['API_URL']
 
 
-@st.cache_data  # 👈 Add the caching decorator
-def load_indnames():
-    indnames = requests.post(url=f"{urlname}/indnames")
-    return indnames
+# @st.cache_data  # 👈 Add the caching decorator
+# def load_indnames():
+#     indnames = requests.post(url=f"{urlname}/indnames")
+#     return indnames
 
 @st.cache_data  # 👈 Add the caching decorator
 def load_data():

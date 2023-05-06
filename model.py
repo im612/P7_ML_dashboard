@@ -36,8 +36,8 @@ def load_indnames():
     return merged
 
 def load_data():
-    colnames = pd.read_csv(f"{BASE_DIR}/colnames.csv").columns.to_list()
-    test_df = pd.read_csv(f"{BASE_DIR}/test_split_orig2.csv")
+    colnames = pd.read_csv(f"{BASE_DIR}/backend/colnames.csv").columns.to_list()
+    test_df = pd.read_csv(f"{BASE_DIR}/backend/test_split_orig2.csv")
     test_df = pd.DataFrame(test_df, columns=colnames)
     test_df['SK_ID_CURR'] = test_df['SK_ID_CURR'].astype(int)
     indnames = pd.DataFrame(test_df, columns=['SK_ID_CURR']).astype(int).values
