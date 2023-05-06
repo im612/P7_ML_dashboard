@@ -32,6 +32,8 @@ st.title("Tableau de bord crédit clients - Pret à dépénser")
 # else:
 #     test_df = pd.read_csv(f"{BASE_DIR}/test_split_orig.csv")
 
+urlname = 'https://p7a.herokuapp.com'
+
 @st.cache_data  # 👈 Add the caching decorator
 def load_data():
     # colnames = pd.read_csv(f"{BASE_DIR}/model_frontend/colnames.csv").columns.to_list()
@@ -43,7 +45,7 @@ def load_data():
 
     # indnames = pd.DataFrame(test_df, columns=['SK_ID_CURR']).astype(int).values
     # indnames = requests.post(url=f"https://p7a.herokuapp.com:8081/indnames")
-    indnames = requests.post(url=f"https://p7a.herokuapp.com/indnames")
+    indnames = requests.post(url=f"{urlname}/indnames")
     # indnames = requests.post(url=URL)
     # indnames = requests.post(url=f"http://p7a.herokuapp.com:8080/indnames")
     # indnames = requests.post(url=f"http://im612-p7-deploy-main-9v49yi.streamlit.app:8080/indnames")
@@ -68,8 +70,8 @@ st.header(f'Code client: {str(int(id))}')
 #
 # # APPEL AUX ENDPOINTS
 # # https://stackoverflow.com/questions/72060222/how-do-i-pass-args-and-kwargs-to-a-rest-endpoint-built-with-fastapi
-# q = {"id" : f'{id.tolist()[0]}'}
-# qj = json.dumps(q)
+q = {"id" : f'{id.tolist()[0]}'}
+qj = json.dumps(q)
 # # https://stackoverflow.com/questions/64057445/fast-api-post-does-not-recgonize-my-parameter
 #
 # # interact with FastAPI endpoint
@@ -78,21 +80,21 @@ st.header(f'Code client: {str(int(id))}')
 # fireto = '0.0.0.0'
 # # fireto = 'backend'
 #
-# response = requests.post(url=f"http://0.0.0.0:8080/probability", data=qj)
+response = requests.post(url=f"{urlname}/probability", data=qj)
 # # response = requests.post(url=f"http://86.214.128.9:8080/probability", data=qj)
-# obj1 = response.json()
-# prob = obj1['probability']
+obj1 = response.json()
+prob = obj1['probability']
 # #
-# response = requests.post(url=f"http://{fireto}:8080/prediction", data=qj)
-# obj2 = response.json()
-# pred = obj2['prediction']
+response = requests.post(url=f"{urlname}/prediction", data=qj)
+obj2 = response.json()
+pred = obj2['prediction']
 #
-# response = requests.post(url=f"http://{fireto}:8080/seuil", data=qj)
-# obj3 = response.json()
-# seuil = obj3['seuil']
+response = requests.post(url=f"{urlname}/seuil", data=qj)
+obj3 = response.json()
+seuil = obj3['seuil']
 #
-# st.divider()
-#
+st.divider()
+
 # # ALLEGGERIMENTO 1
 # # # col1, col2, col3 = st.columns(3)
 # # col1, col3 = st.columns(2)
