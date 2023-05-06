@@ -73,8 +73,9 @@ st.header(f'Code client: {str(int(id))}')
 # q = {"id" : f'{id.tolist()[0]}'}
 # q = {"id" : f"{id, id['id']}"}
 # q = {"id" : f'{id["id"]}'}
-st.write(id, type(id))
-# qj = json.dumps(q)
+st.write(id)
+q = id
+qj = json.dumps(q)
 # # https://stackoverflow.com/questions/64057445/fast-api-post-does-not-recgonize-my-parameter
 #
 # # interact with FastAPI endpoint
@@ -83,10 +84,10 @@ st.write(id, type(id))
 # fireto = '0.0.0.0'
 # # fireto = 'backend'
 #
-# response = requests.post(url=f"{urlname}/probability", data=qj)
+response = requests.post(url=f"{urlname}/probability", data=qj)
 # # # response = requests.post(url=f"http://86.214.128.9:8080/probability", data=qj)
-# obj1 = response.json()
-# prob = obj1['probability']
+obj1 = response.json()
+prob = obj1['probability']
 # # #
 # response = requests.post(url=f"{urlname}/prediction", data=qj)
 # obj2 = response.json()
