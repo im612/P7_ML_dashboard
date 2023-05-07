@@ -55,8 +55,8 @@ st.write(q, qj)
 
 
 # response = requests.post(url=f"{urlname2}/probability", data=qj)
-# response = requests.post(url=f"{urlname2}/probability", json=qj)
-response = requests.post(url=f"{urlname2}/probability", data=qj)
+# response = requests.post(url=f"{urlname2}/probability", json=qj) #v109 -no
+response = requests.post(url=f"{urlname}/probability", data=qj) #v110
 # response = requests.post(url=f"{urlname}/probability")
 st.write(response)
 objprob = response.json()
