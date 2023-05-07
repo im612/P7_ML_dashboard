@@ -34,12 +34,12 @@ class Id(BaseModel):
 def home():
     return {"health_check": "OK"}
 
-@app.post("/probability2")
+@app.post("/probability")
 def pred_prob(iddata: Id):
     proba = float(get_probability_df(int(iddata.id)))
     return {"probability": proba}
 
-@app.post("/probability")
+@app.post("/probability2b")
 def pred_prob(iddata):
     proba = float(get_probability_df(int(iddata)))
     return {"probability": proba}
