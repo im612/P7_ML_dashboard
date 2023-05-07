@@ -58,13 +58,13 @@ st.write(q)
 
 # response = requests.post(url=f"{urlname2}/probability", data=qj)
 # response = requests.post(url=f"{urlname2}/probability", json=qj) #v109 -no
-response = requests.post(url=f"{urlname}/probability", data=q) #v110
+response = requests.post(url=f"{urlname}/probability", data=qj) #v110
 # response = requests.post(url=f"{urlname}/probability")
 st.write(response)
 objprob = response.json()
 st.write(objprob)
-prob = objind['probability']
-st.write(objind)
+# prob = objind['probability']
+# st.write(objind)
 
 # # # # response = requests.post(url=f"http://86.214.128.9:8080/probability", data=qj)
 # objind = response.json()
