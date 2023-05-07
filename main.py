@@ -51,14 +51,14 @@ st.header(f'Code client: {str(int(id))}')
 q = {"id" : f"{id}"}
 # q = {"id" : f'{id.tolist()[0]}'}
 # q = id
-# qj = json.dumps(q)
+qj = json.dumps(q)
 # st.write(q, qj)
 st.write(q)
 
 
 # response = requests.post(url=f"{urlname2}/probability", data=qj)
 # response = requests.post(url=f"{urlname2}/probability", json=qj) #v109 -no
-response = requests.post(url=f"{urlname}/probability", data=q) #v110
+response = requests.post(url=f"{urlname}/probability", data=qj) #v110
 # response = requests.post(url=f"{urlname}/probability")
 st.write(response)
 objprob = response.json()
