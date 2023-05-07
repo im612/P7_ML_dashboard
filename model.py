@@ -113,6 +113,7 @@ def get_line1( id, X ):
 
 def get_line( id ):
     id = int(id)
+    X = load_x()
     X_line = pd.DataFrame(X.loc[X['SK_ID_CURR'] == id])
     X_line = X_line.drop(columns='SK_ID_CURR')
     return X_line
@@ -149,7 +150,7 @@ def get_indice( id ):
 
 def get_probability_df(id):
     best_model, X, threshold = get_the_rest()
-    X_line = get_line(id, X)
+    X_line = get_line(id)
     output_prob = best_model.predict_proba(X_line)
     output_prob = pd.DataFrame(output_prob)
     output_prob.rename(columns={0: 'P0', 1: 'P1'}, inplace=True)
