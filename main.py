@@ -51,6 +51,8 @@ st.header(f'Code client: {str(int(id))}')
 # q = {"id" : f'{id.tolist()[0]}'}
 q = id
 qj = json.dumps(q)
+st.write(q, qj)
+
 
 # response = requests.post(url=f"{urlname2}/probability", data=qj)
 # response = requests.post(url=f"{urlname2}/probability", json=qj)

@@ -39,11 +39,6 @@ def pred_prob(iddata: Id):
     proba = float(get_probability_df(int(iddata.id)))
     return {"probability": proba}
 
-@app.post("/probability2b")
-def pred_prob(iddata):
-    proba = float(get_probability_df(int(iddata)))
-    return {"probability": proba}
-
 @app.post("/prediction")
 def prediction(iddata: Id):
     pred = float(get_prediction(int(iddata.id)))
