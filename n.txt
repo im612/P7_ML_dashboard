@@ -1,7 +1,0 @@
-git add . ; git commit -m "commit v45"
-
-git push -u origin main
-
-cache
-https://help.heroku.com/18PI5RSY/how-do-i-clear-the-build-cache
-
