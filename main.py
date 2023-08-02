@@ -17,7 +17,7 @@ from pathlib import Path
 # from requests_toolbelt.multipart.encoder import MultipartEncoder
 # import os
 
-from numba.core.errors import NumbaDeprecationWarning, NumbaPendingDeprecationWarning
+# from numba.core.errors import NumbaDeprecationWarning, NumbaPendingDeprecationWarning
 import warnings
 warnings.simplefilter('ignore', category=NumbaDeprecationWarning)
 warnings.simplefilter('ignore', category=NumbaPendingDeprecationWarning)
