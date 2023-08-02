@@ -8,7 +8,7 @@ import plotly.figure_factory as ff
 import plotly.graph_objects as go
 import pandas as pd
 # import shap.plots
-from streamlit_shap import st_shap
+# from streamlit_shap import st_shap
 from numpy import argsort
 import numpy as np
 
