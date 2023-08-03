@@ -1,4 +1,4 @@
-# Dashboard implementation of a ML classification model 
+# Dashboard interface and implementation of a ML classification model 
 <!---
 This project 
 -->
