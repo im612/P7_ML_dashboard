@@ -8,7 +8,8 @@ In order to achieve this, we trained a number of ML protocols, compared their pe
 
 For more details please check the *Supporting Material* folder (presentation and methodological essay). Although this material is currently written in French only, the most essential parts may be understandable even to non-french speakers, for example the table of ML models' performances in the methodological essay.
 
-This project is partially inspired by and includes the Kaggle Competition [Home Credit Default Risk](https://www.kaggle.com/competitions/home-credit-default-risk/overview).
+
 <!---
 Commento commento 
+This project is partially inspired by and includes the Kaggle Competition [Home Credit Default Risk](https://www.kaggle.com/competitions/home-credit-default-risk/overview).
 -->
