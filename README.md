@@ -10,6 +10,5 @@ For more details please check the *Supporting Material* folder (presentation and
 
 
 <!---
-Commento commento 
-This project is partially inspired by and includes the Kaggle Competition [Home Credit Default Risk](https://www.kaggle.com/competitions/home-credit-default-risk/overview).
+Commento commento This project is partially inspired by and includes the Kaggle Competition [Home Credit Default Risk](https://www.kaggle.com/competitions/home-credit-default-risk/overview).
 -->
